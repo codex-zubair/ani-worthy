@@ -1,0 +1,197 @@
+========================================================================
+ANIWORTHY - COMPLETE GOOGLE PLAY PUBLISHING GUIDE
+========================================================================
+For:      codex-zubair
+App:      AniWorthy (com.anivala.watchanimetv)
+Version:  1.0.0 (versionCode 1)
+Built:    2026-10-11
+
+This is the end-to-end checklist. Follow it top to bottom. Sections marked
+[YOU] need account-level actions only you can do. Everything else is ready.
+
+========================================================================
+0. WHAT IS ALREADY DONE FOR YOU
+========================================================================
+[x] AAB built and signed: build/app/outputs/bundle/release/app-release.aab
+    (50.4 MB)  [jar verified]
+[x] APK built and signed (for sideload): 
+    build/app/outputs/flutter-apk/app-release.apk (49.4 MB)
+[x] Keystore + passwords backed up:
+      /mnt/external_disk/ALL-APP-KEYS/AniWorthy/
+      (upload-keystore.jks, key.properties, README.txt with fingerprints)
+[x] flutter analyze: 0 issues
+[x] flutter test: 17/17 passed
+[x] NO Android permissions declared (INTERNET + ACCESS_NETWORK_STATE removed)
+[x] Store copy written: store_assets/PLAY_STORE_LISTING.txt
+[x] App icon 512: assets/images/play_icon_512.png
+[x] Feature graphic 1024x500:
+      store_assets/graphics/feature_graphic_1024x500.png
+[x] 5 phone screenshots: store_assets/screenshots/*.png
+[x] Privacy policy HTML: privacy-policy/index.html
+[x] Privacy policy LIVE (HTTP 200):
+      https://codex-zubair.github.io/all_privacy_policy/aniworthy/
+[x] Data safety + content rating answers: PLAY_STORE_LISTING.txt
+[x] Installed and smoke-tested on a real device (quiz playthrough verified)
+[x] Public GitHub repo: https://github.com/codex-zubair/ani-worthy
+
+========================================================================
+1. PREREQUISITES [YOU]
+========================================================================
+1.1 A Google account.
+1.2 A Google Play Developer account (https://play.google.com/console),
+    one-time $25 fee. Choose ORGANIZATION (company) or PERSONAL
+    (developer name shown as codex-zubair).
+1.3 Ensure iam.nmzar@gmail.com is verified.
+
+NOTE: This package (com.anivala.watchanimetv) is the CLIENT's required
+package name. The app is a simple, zero-permission trivia game — the
+easiest kind of app to get approved.
+
+========================================================================
+2. PRIVACY POLICY (already live) [DONE]
+========================================================================
+Live and returning HTTP 200:
+  https://codex-zubair.github.io/all_privacy_policy/aniworthy/
+Use this URL everywhere Play asks for a privacy policy.
+
+========================================================================
+3. CREATE THE APP IN PLAY CONSOLE [YOU]
+========================================================================
+3.1 https://play.google.com/console -> "Create app".
+3.2 Fields:
+      App name:            AniWorthy
+      Default language:    English (United States)
+      App or game:         App  (or Game, if you prefer the Games section)
+      Free or paid:        Free
+      Declarations:        tick both
+3.3 Click "Create app".
+
+========================================================================
+4. SET UP THE STORE LISTING [30 minutes]
+========================================================================
+Play Console -> "Grow" -> "Store presence" -> "Main store listing".
+Fill from store_assets/PLAY_STORE_LISTING.txt:
+  4.1 App name: AniWorthy
+  4.2 Short description (69-char line)
+  4.3 Full description (copy the whole block)
+  4.4 App icon:    assets/images/play_icon_512.png
+  4.5 Feature graphic: store_assets/graphics/feature_graphic_1024x500.png
+  4.6 Phone screenshots: all 5 from store_assets/screenshots/
+  4.7 Save.
+
+Graphics requirements (all satisfied):
+  - Icon: 512x512, 32-bit PNG, max 1 MB. OK.
+  - Feature graphic: 1024x500 PNG. OK.
+  - Screenshots: 1080x1920, aspect ratio 1.78 (<= 2). OK.
+
+========================================================================
+5. APP CONTENT FORMS [20 minutes]
+========================================================================
+Play Console -> "Policy" -> "App content". Complete EVERY section.
+  5.1 Privacy policy   -> URL from step 2
+  5.2 Ads              -> "No, my app does not contain ads"
+  5.3 App access       -> "All functionality available without restrictions"
+  5.4 Content rating   -> Category "Utility..."; answer "No" to everything.
+                          Expect "Everyone / 3+"
+  5.5 Target audience  -> 13+ (or 18+); NOT designed for children
+  5.6 News / COVID / Government / Financial / Health -> No
+  5.7 Data safety      -> SEE SECTION 6
+
+========================================================================
+6. DATA SAFETY FORM (do this carefully) [10 minutes]
+========================================================================
+  6.1 "Does your app collect or share any of the required user data types?"
+      -> NO
+  6.2 "Is all of the user data collected by your app encrypted in transit?"
+      -> Not applicable. If required, choose "No".
+  6.3 Data types: leave ALL unchecked.
+  6.4 "Do you provide a way for users to request deletion?"
+      -> No (no data collected). Optionally mention the in-app Reset.
+  6.5 Save.
+
+Because the app requests NO permissions and has no analytics/ads, this form
+is trivial and defensible.
+
+========================================================================
+7. SET UP RELEASE SIGNING (Play App Signing) [10 minutes]
+========================================================================
+Choose "Continue" when Play offers Play App Signing. Upload the AAB signed
+with YOUR upload key (upload-keystore.jks from ALL-APP-KEYS/AniWorthy).
+Google then stores the real app signing key; your JKS becomes the upload key.
+KEEP THE UPLOAD KEY SAFE.
+
+========================================================================
+8. CREATE THE RELEASE [15 minutes]
+========================================================================
+8.1 Build (already done, rebuild any time):
+      cd /home/codex-zubair/Desktop/APPS/aniworthy
+      flutter build appbundle --release
+8.2 Play Console: "Release" -> "Testing" -> "Internal testing" ->
+    "Create new release".
+8.3 Upload app-release.aab.
+8.4 Release notes (from PLAY_STORE_LISTING.txt -> RELEASE NOTES).
+8.5 Add your email as a tester.
+8.6 Save -> Review release -> Start rollout to Internal testing.
+
+========================================================================
+9. PROMOTE TO PRODUCTION [after internal test is green]
+========================================================================
+9.1 Fix anything Play flags (usually none).
+9.2 "Release" -> "Production" -> "Create new release" -> reuse the 1.0.0
+    bundle from "Library".
+9.3 Rollout 100%. Submit for review.
+
+REVIEW TIMES: new accounts 3-7 days for the first app; updates hours-2 days.
+
+========================================================================
+10. AFTER PUBLICATION
+========================================================================
+10.1 Store link:
+       https://play.google.com/store/apps/details?id=com.anivala.watchanimetv
+10.2 Watch "Quality" -> "Android vitals" and "Ratings".
+10.3 To update: bump the version in pubspec.yaml, rebuild, upload.
+
+========================================================================
+11. HOW TO BUILD FUTURE UPDATES ON ANY MACHINE
+========================================================================
+11.1 Copy from /mnt/external_disk/ALL-APP-KEYS/AniWorthy/:
+       upload-keystore.jks -> android/ (rename to aniworthy-release.jks or
+                              set storeFile= accordingly)
+       key.properties      -> android/
+11.2 Edit pubspec.yaml version (e.g. version: 1.0.1+2).
+11.3 flutter pub get && flutter build appbundle --release
+11.4 Upload the new AAB.
+NEVER change the applicationId (com.anivala.watchanimetv) - it is permanent.
+
+========================================================================
+12. MANIFEST SUMMARY (for your records)
+========================================================================
+  - NO <uses-permission> entries (INTERNET + ACCESS_NETWORK_STATE removed).
+  - A single launcher activity (.MainActivity).
+  - android:allowBackup="false", usesCleartextTraffic="false".
+  - Standard Flutter embedding meta-data.
+  - A <queries> block for PROCESS_TEXT + VIEW(https) (Flutter + url_launcher).
+
+========================================================================
+13. TROUBLESHOOTING
+========================================================================
+- "App bundle was not signed" -> rebuild with android/key.properties present.
+- "Version code already used" -> increase +N in pubspec version.
+- Screenshot rejected -> PNG/JPEG, max 2:1, min 320px. Provided are fine.
+- Feature graphic rejected -> exactly 1024x500. Provided complies.
+
+========================================================================
+14. QUICK CHECKLIST (print this)
+========================================================================
+[x] Privacy policy live and returning 200
+[ ] Register/confirm Play developer account
+[ ] Create app "AniWorthy" in Play Console
+[ ] Fill main store listing (text + icon + feature graphic + screenshots)
+[ ] Complete ALL App content forms (privacy, ads, access, rating, target,
+    data safety, etc.)
+[ ] Enroll in Play App Signing (upload key = provided keystore)
+[ ] Internal testing release with app-release.aab
+[ ] Install via test link, smoke-test
+[ ] Promote to Production (100%)
+[ ] Wait for review; confirm listing live
+========================================================================

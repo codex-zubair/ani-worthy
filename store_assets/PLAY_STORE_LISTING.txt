@@ -1,0 +1,181 @@
+========================================================================
+ANIWORTHY - GOOGLE PLAY STORE LISTING CONTENT
+========================================================================
+Copy/paste these values directly into the Play Console.
+Character limits are noted; all values are within limits.
+
+========================================================================
+APP IDENTITY
+========================================================================
+App name (max 30):            AniWorthy
+                              (9 characters)
+
+Package name (permanent):     com.anivala.watchanimetv
+
+Default language:             English (United States) - en-US
+
+App category:                 Trivia  (or "Entertainment" / "Casual")
+Tags (max 5):                 Anime, Trivia, Quiz, Offline, Manga
+
+Contact email:                iam.nmzar@gmail.com
+Contact website (optional):   https://github.com/codex-zubair
+Contact phone (optional):     (leave blank)
+
+Privacy policy URL:           https://codex-zubair.github.io/all_privacy_policy/aniworthy/
+
+========================================================================
+STORE LISTING TEXT
+========================================================================
+
+--- Short description (max 80) ---
+Offline anime trivia quiz. Test your knowledge. No ads, no tracking.
+(69 characters)
+
+--- Full description (max 4000) ---
+AniWorthy is a fast, friendly anime trivia quiz that works completely
+offline. Answer questions about studios, series, characters, creators and
+the words every fan knows. No internet, no ads, no accounts — just you and
+your anime knowledge.
+
+Think you know your anime? Play a 10-question round and find out. Every
+answer comes with a short explanation, so you learn something new even when
+you are wrong.
+
+HOW IT WORKS
+- Choose a category, or let AniWorthy mix them all together.
+- Answer 10 multiple-choice questions.
+- Get instant feedback and a short fact after every answer.
+- See your score, your grade and a full review of the round.
+- Your best score for each category is saved on your device.
+
+CATEGORIES
+- Studios — who animated what, from ufotable to Studio Ghibli.
+- Series — iconic shows, movies, years and episode counts.
+- Characters — heroes, villains and sidekicks.
+- Creators — the mangaka and directors behind the classics.
+- General — the terms and traditions every fan should know.
+
+PRIVATE BY DESIGN
+- No internet permission at all — the app cannot go online.
+- Zero Android permissions requested.
+- No ads, no analytics, no trackers.
+- All questions are bundled inside the app.
+- Best scores are stored only in the app's private storage on your device
+  and can be cleared any time from the Settings screen.
+
+100% ORIGINAL CONTENT
+Every question and fact is original and factual. AniWorthy contains no
+video, audio, manga or other copyrighted media, and no verbatim quotations,
+dialogue or lyrics.
+
+Open source
+AniWorthy's source code is public at
+https://github.com/codex-zubair/ani-worthy
+
+Built by codex-zubair.
+
+========================================================================
+DATA SAFETY FORM (Play Console -> App content -> Data safety)
+========================================================================
+Answer exactly as follows.
+
+Does your app collect or share any of the required user data types?
+  -> No
+
+Is all of the user data collected by your app encrypted in transit?
+  -> N/A (no data collected) - if forced, answer "No".
+
+Do you provide a way for users to request that their data is deleted?
+  -> No (because no data is collected). Optionally note the in-app
+     "Reset all scores" action.
+
+Data types: leave every category unchecked.
+
+Additional:
+  - "Is your app's data collection practice covered by a privacy policy?"
+    -> Yes, provide the privacy policy URL above.
+  - "Has your app been independently validated?" -> No.
+
+Result summary shown to users: "No data collected" and "No data shared".
+This matches the app: no permissions, no INTERNET permission, no analytics.
+
+========================================================================
+APP CONTENT QUESTIONNAIRES
+========================================================================
+
+1. Privacy policy
+   -> Provide the URL above.
+
+2. Ads
+   -> No, the app does not contain ads.
+
+3. App access
+   -> All functionality is available without restrictions. (No login.)
+
+4. Content rating questionnaire
+   -> Category: "Utility, Productivity, Communication, or Other"
+      (or "Game" if you list it in a game category).
+   -> Answer "No" to every sensitive-content question.
+   Expected result: Rated for everyone / 3+.
+
+5. Target audience
+   -> Age groups: 13+ (or 18+). Do NOT select under 13.
+   -> "Is the app designed for children?" -> No.
+
+6. News / COVID / Government / Financial / Health
+   -> No to all.
+
+7. Data safety
+   -> See the Data Safety section above.
+
+========================================================================
+PERMISSIONS DECLARATION (Play Console -> App content -> sensitive perms)
+========================================================================
+AniWorthy declares NO Android permissions. It explicitly REMOVES the network
+permissions so the app cannot go online:
+  - android.permission.INTERNET            (tools:node="remove")
+  - android.permission.ACCESS_NETWORK_STATE (tools:node="remove")
+
+There is no location, camera, microphone, storage, contacts, phone, SMS or
+AD_ID permission. The Play Console will not prompt for permission
+declarations, and the app qualifies for the "No data collected" label.
+
+========================================================================
+STORE ASSETS (files provided)
+========================================================================
+App icon (512 x 512 PNG, 32-bit):
+  assets/images/play_icon_512.png
+
+Feature graphic (1024 x 500 PNG):
+  store_assets/graphics/feature_graphic_1024x500.png
+
+Phone screenshots (1080 x 1920 PNG, minimum 2 required, 8 max):
+  store_assets/screenshots/01_home.png
+  store_assets/screenshots/02_question.png
+  store_assets/screenshots/03_categories.png
+  store_assets/screenshots/04_results.png
+  store_assets/screenshots/05_about_privacy.png
+
+Optional (not required): tablet screenshots.
+
+========================================================================
+RELEASE NOTES (for "What's new" - first release)
+========================================================================
+First release.
+
+- Offline anime trivia with 5 categories and 100+ questions.
+- Instant feedback with a short fact after every answer.
+- Score, grade and full round review.
+- Personal bests saved on your device.
+- No permissions, no ads, no internet.
+
+========================================================================
+VERSIONING (for future updates)
+========================================================================
+Current: versionName 1.0.0, versionCode 1.
+To ship an update, edit pubspec.yaml:
+  version: 1.0.1+2        # name 1.0.1, code 2 (code must always increase)
+Then rebuild:
+  flutter build appbundle --release
+and upload the new AAB to the same app in Play Console.
+========================================================================

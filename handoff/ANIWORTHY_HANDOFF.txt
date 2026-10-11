@@ -1,0 +1,159 @@
+========================================================================
+ANIWORTHY - WORK PROGRESS / HANDOFF
+========================================================================
+App:        AniWorthy
+Subtitle:   100% Offline Anime Trivia & Quiz
+Company:    codex-zubair
+Package:    com.anivala.watchanimetv   (client-required package name)
+Repo:       git@github.com:codex-zubair/ani-worthy.git
+Platform:   Android only (Play Store)
+Version:    1.0.0+1
+Last updated: 2026-10-11
+
+READ THIS FIRST. Keep it updated: current state, what is done, what is
+pending, commands, blockers.
+
+========================================================================
+1. GOAL
+========================================================================
+Ship a SIMPLE, easy-to-publish, fully offline anime trivia app on the
+client-required package com.anivala.watchanimetv. Zero permissions, zero
+network, no ads, no analytics — the lightest possible Play review.
+
+The package name was previously used by AniLoom (repackage to
+com.codexzubair.aniloom, personal use) so this client app could own it.
+
+========================================================================
+2. STATUS
+========================================================================
+DONE:
+  [x] Flutter project scaffolded (org com.anivala, project watchanimetv,
+      android only) -> applicationId com.anivala.watchanimetv
+  [x] Pure-Dart engine: lib/core/{app_info,question,quiz_engine,
+      trivia_data}.dart  (question bank: 5 categories, 100+ facts-only Qs)
+  [x] Services: score_store.dart (SharedPreferences, local bests)
+  [x] State: state/quiz_state.dart (ChangeNotifier + provider)
+  [x] UI: Home (hero + categories + fact of the day), Quiz (feedback +
+      explanation + progress + streak), Results (score/grade/review),
+      Settings (bests + reset), About (privacy link)
+  [x] NO permissions; INTERNET + ACCESS_NETWORK_STATE removed at build time
+  [x] flutter analyze: 0 issues
+  [x] flutter test: 17/17 passed
+  [x] Branding: pure-python question-mark icon generator; launcher icons,
+      adaptive icon, splash, Play 512 icon
+  [x] Store graphics: feature graphic 1024x500 + 5 phone screenshots 1080x1920
+  [x] Release signing keystore + build.gradle.kts release config + R8 rules
+  [x] Release AAB (50.4 MB) + APK (49.4 MB) built and signed, jar verified
+  [x] Keystore + credentials backed up to
+      /mnt/external_disk/ALL-APP-KEYS/AniWorthy/
+  [x] Privacy policy tailored and LIVE (HTTP 200):
+      https://codex-zubair.github.io/all_privacy_policy/aniworthy/
+  [x] Installed on device (Samsung SM-S908U) and smoke-tested: full quiz
+      playthrough, feedback, results, review and personal-best save verified
+  [x] Store listing + publishing guide written
+PENDING:
+  [ ] git init + push to github.com/codex-zubair/ani-worthy
+  [ ] Play Console: create app, upload AAB, store listing, data safety
+
+========================================================================
+3. KEY FACTS / DECISIONS
+========================================================================
+- Name: AniWorthy (Play/App Store search showed no exact match; a formal
+  trademark check is still advisable before publishing).
+- Package: com.anivala.watchanimetv (client requirement; permanent).
+- Content: 100% original & factual (studios, years, creators, terms).
+  NO verbatim quotes/lyrics/media — deliberate, to avoid copyright issues.
+- No permissions. No INTERNET. No ads, no analytics.
+- Local storage uses shared_preferences only (best scores + play count).
+- Scope v1.0: single-player offline quiz. 5 categories x 20+ questions,
+  plus 18 "did you know" facts.
+- Signing keystore is git-ignored; passwords in android/key.properties
+  (also git-ignored). KEEP THE .jks SAFE.
+
+========================================================================
+4. PROJECT LAYOUT
+========================================================================
+lib/
+  core/          Pure Dart (the showcase)
+    app_info.dart      Brand/links constants (incl. privacy URL)
+    question.dart      QuizCategory, Question, Fact models
+    quiz_engine.dart   QuizRound, QuizEngine (shuffle/rounds), QuizScore
+    trivia_data.dart   The full offline question bank + facts
+  services/
+    score_store.dart   SharedPreferences persistence
+  state/
+    quiz_state.dart    ChangeNotifier
+  screens/
+    root_shell.dart, home_screen.dart, quiz_screen.dart,
+    results_screen.dart, settings_screen.dart, about_screen.dart
+  widgets/  brand.dart
+  theme/    app_theme.dart
+test/       quiz_engine_test, quiz_state_test, widget_test
+tool/       gen_icons.py (pure python PNG), make_graphics.py (headless
+            Chrome store graphics)
+android/
+  app/src/main/AndroidManifest.xml   (no permissions; network removed)
+  app/build.gradle.kts                release signing, R8
+  app/proguard-rules.pro
+store_assets/  PLAY_STORE_LISTING.txt, PUBLISHING_GUIDE.txt,
+               graphics/, screenshots/
+privacy-policy/index.html  (source of the live policy)
+
+========================================================================
+5. COMMANDS
+========================================================================
+Setup:   cd /home/codex-zubair/Desktop/APPS/aniworthy && flutter pub get
+Quality: flutter analyze && flutter test
+Build:   flutter build appbundle --release
+         flutter build apk --release
+Assets:  python3 tool/gen_icons.py
+         dart run flutter_launcher_icons
+         dart run flutter_native_splash:create
+         python3 tool/make_graphics.py
+Git:     git remote add origin git@github.com:codex-zubair/ani-worthy.git
+         git push -u origin main
+
+========================================================================
+6. SIGNING
+========================================================================
+Keystore: android/aniworthy-release.jks  (git-ignored)
+Alias:    aniworthy
+Pass:     aniworthy2026key   (in android/key.properties, git-ignored)
+DN:       CN=codex-zubair, OU=Mobile, O=codex-zubair, L=City, ST=State, C=US
+SHA1:     12:CF:6A:C7:5A:7F:65:AC:41:95:B2:FE:30:DE:3D:0C:95:7B:87:6A
+SHA256:   76:64:56:7E:49:84:6E:71:F9:EB:9E:19:EE:CF:0B:9F:DC:4C:C2:2B:1D:
+          9D:53:9B:EA:D2:B1:AB:E8:73:34:1B
+
+========================================================================
+7. PRIVACY POLICY
+========================================================================
+File:  privacy-policy/index.html
+URL:   https://codex-zubair.github.io/all_privacy_policy/aniworthy/ (LIVE 200)
+AppInfo.privacyPolicyUrl in lib/core/app_info.dart is set to this URL.
+
+========================================================================
+8. VERIFIED WORKING (this session)
+========================================================================
+- flutter analyze: No issues found
+- flutter test: 17/17 passed
+- flutter build appbundle --release: SUCCESS (50.4 MB), jar verified
+- flutter build apk --release: SUCCESS (49.4 MB)
+- Device smoke test: install -> home -> start quiz -> answer/feedback -> results
+  -> review -> personal best saved.
+- APK permissions: only the internal DYNAMIC_RECEIVER permission; no
+  INTERNET, no ACCESS_NETWORK_STATE.
+
+========================================================================
+9. CHANGELOG
+========================================================================
+2026-10-11  Initial build.
+  - Repackaged AniLoom to com.codexzubair.aniloom to free the client package.
+  - Scaffolded AniWorthy on com.anivala.watchanimetv.
+  - Wrote engine, dataset (100+ original factual questions), state, UI.
+  - 17 tests passing; analyze clean.
+  - Branding + store graphics generated.
+  - Release AAB + APK built and signed; keystore backed up.
+  - Privacy policy published (live 200).
+  - Installed and smoke-tested on device.
+  - Store listing, publishing guide and this handoff written.
+========================================================================
